@@ -1,0 +1,63 @@
+{
+  "author": {
+    "name": "Team 21: ",
+    "url": "https://github.com/angho8/CS-326-Project"
+  },
+
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "keywords": [],
+  "contributors": [
+    {"name": "Leah Jacobson",
+    "email": "lhjacobson@umass.edu",
+    "username": "leahj02"},
+
+    {"name": "Ashanti Roeung",
+    "email": "aroeung@umass.edu",
+    "username": "ashantilr"},
+
+    {"name": "Bishaka Dhamala",
+    "email": "bdhamala@umass.edu",
+    "username": "bishakaa"},
+
+    {"name": "Angela Ho",
+    "email": "angelaho@umass.edu",
+    "username": "aho08"}
+  ],
+
+  "scripts": {
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
+    "prettier": "prettier src —write",
+    "validate": "html-validate src",
+    "dev": "",
+    "test": ""
+  },
+
+  "devDependencies": {
+    "html-validate": "^8.18.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.2.5"
+  },
+  
+  "html-validate": {
+      "extends": ["html-validate:recommended"],
+      "rules": {
+        "close-order": "error",
+        "void": ["warn", { "style": "omit" }]
+    }
+  }
+}
