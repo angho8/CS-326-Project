@@ -1,13 +1,16 @@
+document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('nav a');
 
-    navLinks.forEach(link => {
+  navLinks.forEach(link => {
       link.addEventListener('click', function(event) {
-        event.preventDefault();
+          event.preventDefault();
 
-        const targetId = this.getAttribute('href');
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
 
-        const targetSection = document.querySelector(targetId);
-
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+          if (targetSection) {
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
       });
-    });
+  });
+});
