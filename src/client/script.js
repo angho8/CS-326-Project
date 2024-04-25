@@ -191,6 +191,3 @@ export class BloodAlcoholCalculator {
   userinfoElement.addEventListener("click", () => {
     editUserInfo();
   });
-
-
-//

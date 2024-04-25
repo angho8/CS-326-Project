@@ -1,21 +1,23 @@
-#title {
-    background-color: black;
-    color: red
+#app{
+    text-align: center;
 }
-#btn-container {
+
+.btn-container {
     background-color: black;
     color: red;
 }
 
 .button {
-    width: 300px; height: 200px;
+    width: 300px; 
+    height: 200px;
     background-color: white;
     color: black;
     position: relative;
     box-shadow: 10px 10px 42px 0 black;
 }
 
-.button:after, .button:before{
+.button:after, 
+.button:before{
     mix-blend-mode:multiply;
     filter:none;
     z-index: -1;
@@ -28,6 +30,7 @@
     transform:translateX(-50px) 
     translateY(-50px);
 }
+
 @keyframes border {
   0%, 100% {
     -webkit-clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
@@ -44,6 +47,7 @@
     background-color: red;
     clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
 }
+
 .button:before {
     background-color: gray;
         clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
@@ -52,19 +56,20 @@
 .button:hover:after{
     animation-delay: -0.1s;
 }
-.button:hover:before, .button:hover:after {
 
-          animation-duration: 0.2s;
+.button:hover:before, 
+.button:hover:after {
+    animation-duration: 0.2s;
 }
 
-#footer {
-    background-color: red;
-    color: black;
-}
-
-#pic1 {
+#pic1:hover {
     animation: shake 0.5s;
     animation-iteration-count: infinite;
+}
+
+footer {
+    background-color: red;
+    color: black;
 }
 
 @keyframes shake {
@@ -79,55 +84,4 @@
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-.drink-btn {
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid gray;
-    border-radius: 5px;
-}
-.form-group {
-    margin-bottom: 20px;
-}
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid gray;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.form-group input[type="submit"] {
-    background-color:red;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.form-group input[type="submit"]:hover {
-    background-color: red;
-    color: white;
 }
