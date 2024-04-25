@@ -12,6 +12,7 @@
       <img src="cocktail_f.jpeg" id="pic1" alt="Pict">
       <button type="button" id="calculate">Calculate Blood Alcohol Now...</button>
       <button type="button" id="userInfo">Edit User Information</button>
+      <button type="button" id=""></button>
       <footer>We do not condone underage drinking</footer>
     </div>
   </div>
@@ -21,8 +22,7 @@
 
     document.addEventListener('click', function(event) {
       const target = event.target;
-      if (target.matches('#userInfo')) {}
-      else if (target.matches('#userInfo')) {
+        if (target.matches('#userInfo')) {
         appContainer.innerHTML = `
           <div class="form-group">
             <label for="gender">Gender:</label>
@@ -44,6 +44,7 @@
             <label for="medical-diagnosis">Medical Diagnosis affecting Blood Alcohol:</label>
             <input type="text" id="medical-diagnosis" name="medical-diagnosis">
           </div>
+          <a href="/">Go back</a>
         `;
       } else if (target.matches('#calculate')) {
         appContainer.innerHTML = `
@@ -71,6 +72,7 @@
             </div>
             <div id="result"></div>
           </div>
+          <a href="/">Go back</a>
         `;
       }
     });
