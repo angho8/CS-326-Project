@@ -2,9 +2,6 @@
  * Class representing a Blood Alcohol Calculator.
  */
 class BloodAlcoholCalculator {
-    /**
-     * Create a Blood Alcohol Calculator.
-     */
     constructor() {
       this.gender = '';
       this.weight = weight;
@@ -66,11 +63,8 @@ class BloodAlcoholCalculator {
             case 'cocktail':
                 this.drinkVolume = 150; 
                 break;
-            case 'champagne':
-                this.drinkVolume = 150; 
-                break;
             case 'beer':
-                this.drinkVolume = volume; // Set volume to user-provided value for beer
+                this.drinkVolume = 285; 
             break;
             // Add more cases for other drink types as needed
             default:
@@ -92,28 +86,25 @@ class BloodAlcoholCalculator {
         let defaultAbv;
         switch (drinkType) {
             case 'shot':
-                defaultAbv = 0.4; // Average ABV for shots
+                defaultAbv = 0.4; 
                 break;
             case 'glass':
-                defaultAbv = 0.12; // Average ABV for wine in a glass
+                defaultAbv = 0.12;
                 break;
             case 'martini':
-                defaultAbv = 0.24; // Average ABV for martinis
+                defaultAbv = 0.24; 
                 break;
             case 'rocks':
-                defaultAbv = 0.4; // Average ABV for drinks served on the rocks
+                defaultAbv = 0.4; 
                 break;
             case 'cocktail':
-                defaultAbv = 0.15; // Average ABV for cocktails
-                break;
-            case 'champagne':
-                defaultAbv = 0.12; // Average ABV for champagne
+                defaultAbv = 0.15; 
                 break;
             case 'beer':
-                defaultAbv = 0.05; // Average ABV for beer
+                defaultAbv = 0.05; 
                 break;
             default:
-                defaultAbv = 0.05; // Default to beer if drink type is not recognized
+                defaultAbv = 0.05; 
             }
 
     
