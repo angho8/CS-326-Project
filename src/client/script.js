@@ -1,15 +1,21 @@
 /**
  * Class representing a Blood Alcohol Calculator.
  */
-class BloodAlcoholCalculator {
+export class BloodAlcoholCalculator {
     constructor() {
       this.gender = '';
       this.weight = weight;
+      this.medical = ''
       this.drinkCount = 0;
       this.drinkType = '';
       this.drinkVolume = 0;
+      this.drinks = {
+          shots: 0,
+          cocktails: 0,
+          beers: 0
+          };
     }
-  
+    
     /**
      * Sets user's gender.
      * @param {string} gender - User's gender anything typed in.
@@ -25,7 +31,40 @@ class BloodAlcoholCalculator {
     setWeight(weight) {
       this.weight = weight;
     }
+
+    /**
+     * Sets user's weight.
+     * @param {string} medical - User's medical condition.
+     */
+    setMedical(medical) {
+        this.medical = medical;
+      }
+
   
+    /**
+     * Increments the type of drinks the user has indicated.
+     * */
+    increment(type) {
+    drinks[type]++;
+    updateDrinks();
+    }
+    
+    /**
+     * Decrements the type of drinks the user has indicated. 
+     * */
+    decrement(type) {
+    if (drinks[type] > 0) {
+        drinks[type]--;
+        updateDrinks();
+    }
+    }
+    
+    updateDrinks() {
+        for (let type in drinks) {
+          document.getElementById(type).innerText = drinks[type];
+        }
+    }
+    
     /**
      * Sets number of drinks consumed.
      * @param {number} count - Number of drinks consumed.
@@ -50,15 +89,6 @@ class BloodAlcoholCalculator {
         switch (drinkType.toLowerCase()) {
             case 'shot':
                 this.drinkVolume = 44; 
-                break;
-            case 'glass':
-                this.drinkVolume = 177; 
-                break;
-            case 'martini':
-                this.drinkVolume = 120; 
-                break;
-            case 'rocks':
-                this.drinkVolume = 89; 
                 break;
             case 'cocktail':
                 this.drinkVolume = 150; 
@@ -85,15 +115,6 @@ class BloodAlcoholCalculator {
         let defaultAbv;
         switch (drinkType) {
             case 'shot':
-                defaultAbv = 0.4; 
-                break;
-            case 'glass':
-                defaultAbv = 0.12;
-                break;
-            case 'martini':
-                defaultAbv = 0.24; 
-                break;
-            case 'rocks':
                 defaultAbv = 0.4; 
                 break;
             case 'cocktail':
@@ -148,11 +169,28 @@ class BloodAlcoholCalculator {
     // Display BAC result
     userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${bacResult}%`;
   }
+
+  function editUserInfo()
+  {
+    const userGender = prompt('Gender : ');
+    const userWeight= prompt('Weight : ');
+    const userHeight = prompt('Height : ' );
+    const medDiag= prompt('Medical Diagnosis affecting Blood Alcohol: ');
+    document.getElementById("gender").value = userGender;
+    document.getElementById("weight").value = userWeight;
+    document.getElementById("height").value = userHeight;
+    document.getElementById("medical-diagnosis").value = medDiag;
+  }
   
   // Event listener for calculate button
   calculateElement.addEventListener("click", () => {
     calculate();
   });
 
+  //Event listener for calculate button
+  userinfoElement.addEventListener("click", () => {
+    editUserInfo();
+  });
 
-  
+
+//

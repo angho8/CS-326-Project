@@ -8,15 +8,15 @@
     color: red;
 }
 
-.btn {
+.button {
     width: 300px; height: 200px;
-    background-color: #DDFFF7;
+    background-color: white;
     color: black;
     position: relative;
     box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
 }
 
-.btn:after, .btn:before{
+.button:after, .button:before{
     mix-blend-mode:multiply;
     filter:none;
     z-index: -1;
@@ -40,20 +40,20 @@
   }
 }
 
-.btn:after{
+.button:after{
     animation-delay: -5s;
     background-color: red;
     clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
 }
-.btn:before {
+.button:before {
     background-color: gray;
         clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
 }
 
-.btn:hover:after{
+.button:hover:after{
     animation-delay: -0.1s;
 }
-.btn:hover:before, .btn:hover:after {
+.button:hover:before, .button:hover:after {
 
           animation-duration: 0.2s;
 }
@@ -82,11 +82,25 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+.drink-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
 .form-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     border-radius: 5px;
 }
 .form-group {
@@ -102,12 +116,12 @@
 .form-group select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     border-radius: 4px;
     box-sizing: border-box;
 }
 .form-group input[type="submit"] {
-    background-color: #4CAF50;
+    background-color:red;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -115,5 +129,6 @@
     cursor: pointer;
 }
 .form-group input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: red;
+    color: white;
 }
