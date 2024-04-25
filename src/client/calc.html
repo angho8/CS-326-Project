@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculate BAC</title>
+  <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculate Blood Alcohol</h1>
+    <div id="drinks">
+      <div>
+        <button type="button" class="drink-btn" onclick="decrement('shots')">-</button>
+        <img src="shots.png" alt="Shots">
+        <span id="shots">0</span>
+        <button type="button" class="drink-btn" onclick="increment('shots')">+</button>
+      </div>
+      <div>
+        <button type="button" class="drink-btn" onclick="decrement('wine')">-</button>
+        <img src="wine.png" alt="Wine">
+        <span id="wine">0</span>
+        <button type="button" class="drink-btn" onclick="increment('wine')">+</button>
+      </div>
+      <div>
+        <button type="button" class="drink-btn" onclick="decrement('cocktails')">-</button>
+        <img src="cocktails.png" alt="Cocktails">
+        <span id="cocktails">0</span>
+        <button type="button" class="drink-btn" onclick="increment('cocktails')">+</button>
+      </div>
+      <div>
+        <button type="button" class="drink-btn" onclick="decrement('beers')">-</button>
+        <img src="beers.png" alt="Beers">
+        <span id="beers">0</span>
+        <button type="button" class="drink-btn" onclick="increment('beers')">+</button>
+      </div>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
