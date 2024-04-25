@@ -12,7 +12,7 @@
     background-color: white;
     color: black;
     position: relative;
-    box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 42px 0 black;
 }
 
 .button:after, .button:before{
@@ -62,7 +62,7 @@
     color: black;
 }
 
-#img:hover {
+#pic1 {
     animation: shake 0.5s;
     animation-iteration-count: infinite;
 }
