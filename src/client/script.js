@@ -66,7 +66,6 @@ class BloodAlcoholCalculator {
             case 'beer':
                 this.drinkVolume = 285; 
             break;
-            // Add more cases for other drink types as needed
             default:
                 this.drinkVolume = 0; // Set default volume to 0 if the drink type is not recognized
             }
