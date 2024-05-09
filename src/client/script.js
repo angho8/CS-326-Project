@@ -1,3 +1,5 @@
+import PouchDB from 'pouchdb';
+
 /**
  * Class representing a Blood Alcohol Calculator.
  */
@@ -13,12 +15,13 @@ export class BloodAlcoholCalculator {
           shots: 0,
           cocktails: 0,
           beers: 0
-          };
+        };
+      this.localDB = new PouchDB('user_data'); 
     }
     
     /**
      * Sets user's gender.
-     * @param {string} gender - User's gender anything typed in.
+     * @param {string} gender 
      */
     setGender(gender) {
       this.gender = gender;
@@ -26,7 +29,7 @@ export class BloodAlcoholCalculator {
   
     /**
      * Sets user's weight.
-     * @param {number} weight - User's weight in pounds.
+     * @param {number} weight 
      */
     setWeight(weight) {
       this.weight = weight;
@@ -34,7 +37,7 @@ export class BloodAlcoholCalculator {
 
     /**
      * Sets user's weight.
-     * @param {string} medical - User's medical condition.
+     * @param {string} medical 
      */
     setMedical(medical) {
         this.medical = medical;
@@ -66,14 +69,6 @@ export class BloodAlcoholCalculator {
     }
     
     /**
-     * Sets number of drinks consumed.
-     * @param {number} count - Number of drinks consumed.
-     */
-    setDrinkCount(count) {
-      this.drinkCount += count;
-    }
-  
-    /**
      * Sets type of drink consumed.
      * @param {string} type - Type of drink consumed.
      */
@@ -83,7 +78,7 @@ export class BloodAlcoholCalculator {
   
     /**
      * Set volume of drink consumed based on drink type.
-     * @param {string} drinkType - Type of drink consumed (e.g., "shot", "glass", "martini", "rocks", "cocktail", "champagne").
+     * @param {string} drinkType - Type of drink consumed (e.g., "shot", "beer", "cocktail").
      */
     setDrinkVolume(drinkType) {
         switch (drinkType.toLowerCase()) {
@@ -139,6 +134,7 @@ export class BloodAlcoholCalculator {
         return bac.toFixed(2); // Return BAC rounded to 2 decimal places
         }
     }
+  
   
   
   // Create an instance of the BloodAlcoholCalculator class

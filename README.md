@@ -5,3 +5,12 @@ To indicate how many drinks the user has had there will be buttons that will ind
 If the user picks a shot they will be asked to indicate if it was a single, double, or mixed shot, and if they select a cocktail they will be asked to select the exact one from a list of cocktails, 
 then indicate if it was a single or double, as some cocktails contain more alcohol than others. 
 Along with this, our application will tell the user their expected level of drunkenness based on their blood alcohol percentage and will alert the user when it is at or above a dangerous level. 
+
+
+Back-end Implementations:
+
+
+Set-Up Instructions:
+
+
+How to Interact with Application: 
