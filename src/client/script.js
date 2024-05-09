@@ -1,5 +1,7 @@
   
-// Get DOM elements
+/**
+ * Get DOM elements
+ */
 const calculateElement = document.getElementById("calculate");
 const userinfoElement = document.getElementById("user-info");
 const gender = document.getElementById("gender");
@@ -9,7 +11,9 @@ const drinkType = document.getElementById("drink-type");
 const drinkVolume = parseFloat(document.getElementById("drink-volume"));
 
 
-// Function to handle calculation
+/**
+ * Function to handle calculations
+ */
 async function calculate() {
   const response = await fetch('/calculateBAC',{
     method: 'POST', 
@@ -30,6 +34,9 @@ async function calculate() {
 }
 
 
+/**
+ * Function to edit user information
+ */
 async function editUserInfo() {
   const userGender = prompt('Gender : ');
   const userWeight= prompt('Weight : ');
@@ -44,5 +51,5 @@ async function editUserInfo() {
 // Event listener for calculate button
 calculateElement.addEventListener("click", calculate);
 
-//Event listener for calculate button
+//Event listener for user info button
 userinfoElement.addEventListener("click", editUserInfo);
