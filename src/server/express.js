@@ -1,5 +1,3 @@
-import PouchDB from "pouchdb";
-
 // Initialize PouchDB
 const db = new PouchDB("counters");
 

@@ -1,6 +1,6 @@
   
 /**
- * Get DOM elements
+ * Get DOM elements 
  */
 const calculateElement = document.getElementById("calculate");
 const userinfoElement = document.getElementById("user-info");
