@@ -1,36 +1,35 @@
-  
 /**
  * Get DOM elements 
  */
 const calculateElement = document.getElementById("calculate");
 const userinfoElement = document.getElementById("user-info");
-const gender = document.getElementById("gender");
-const weight = parseFloat(document.getElementById("weight"));
-const drinkCount = parseInt(document.getElementById("drink-count"));
-const drinkType = document.getElementById("drink-type");
-const drinkVolume = parseFloat(document.getElementById("drink-volume"));
+const gender = document.getElementById("gender").value;
+const weight = parseFloat(document.getElementById("weight").value);
+const drinkCount = parseInt(document.getElementById("drink-count").value);
+const drinkType = document.getElementById("drink-type").value;
+const drinkVolume = parseFloat(document.getElementById("drink-volume").value);
 
 
 /**
  * Function to handle calculations
  */
 async function calculate() {
-  const response = await fetch('/calculateBAC',{
-    method: 'POST', 
-  })
-
-  // Set user inputs
-  bacCalculator.setGender(gender);
-  bacCalculator.setWeight(weight);
-  bacCalculator.setDrinkCount(drinkCount);
-  bacCalculator.setDrinkType(drinkType);
-  bacCalculator.setDrinkVolume(drinkVolume);
+  const response = await fetch('/calculateBAC', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      gender: gender,
+      weight: weight,
+      drinkCount: drinkCount,
+      drinkType: drinkType,
+      drinkVolume: drinkVolume
+    })
+  });
   
-  // Calculate BAC
-  const bacResult = bacCalculator.calculateBAC();
-  
-  // Display BAC result
-  userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${bacResult}%`;
+  const data = await response.json();
+  userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${data.bacResult}%`;
 }
 
 
