@@ -29,7 +29,11 @@ async function calculate() {
   });
   
   const data = await response.json();
+  if (document.getElementById("medical-diagnosis").value === "false" {
   userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${data.bacResult}%`;
+  
+  else {
+    userinfoElement.innerHTML = `Blood Alcohol Content (BAC): > ${data.bacResult}%`;
 }
 
 
