@@ -10,7 +10,7 @@ const drinkType = document.getElementById("drink-type").value;
 const drinkVolume = parseFloat(document.getElementById("drink-volume").value);
 
 
-function calculateBloodAlcohol(gender, weight, height, shots=0, wine=0, cocktails=0, beers=0) {
+export async function calculateBloodAlcohol(gender, weight, drinkCount, drinkType, drinkVolume) {
     // Constants for the Widmark formula
     const genderCalc = gender.toLowerCase() === 'male' ? 0.55 : 0.68; // Widmark's distribution ratio
     const weightCalc = weight * 1000; // Convert weight to grams
@@ -24,10 +24,7 @@ function calculateBloodAlcohol(gender, weight, height, shots=0, wine=0, cocktail
     };
 
     // Calculate total grams of alcohol consumed
-    const totalAlcohol = (shots * alcoholContent['shot'] +
-                          wine * alcoholContent['wine'] +
-                          cocktails * alcoholContent['cocktail'] +
-                          beers * alcoholContent['beer']);
+    const totalAlcohol = drinkCount * (alcoholContent[drinkType] * drinkVolume);
 
     // Calculate Blood Alcohol Concentration (BAC)
     const bac = (totalAlcohol / (weightCalc * genderCalc)) * 100;
