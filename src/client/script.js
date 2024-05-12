@@ -10,9 +10,33 @@ const drinkType = document.getElementById("drink-type").value;
 const drinkVolume = parseFloat(document.getElementById("drink-volume").value);
 
 
-/**
- * Function to handle calculations
- */
+function calculateBloodAlcohol(gender, weight, height, shots=0, wine=0, cocktails=0, beers=0) {
+    // Constants for the Widmark formula
+    const genderCalc = gender.toLowerCase() === 'male' ? 0.55 : 0.68; // Widmark's distribution ratio
+    const weightCalc = weight * 1000; // Convert weight to grams
+
+    // Standard drink sizes in grams of alcohol
+    const alcoholContent = {
+        shot: 14,  // 1.5 oz of 40% alcohol
+        wine: 10,  // 5 oz of 12% alcohol
+        cocktail: 30,  // 3 oz of 20% alcohol
+        beer: 14  // 12 oz of 5% alcohol
+    };
+
+    // Calculate total grams of alcohol consumed
+    const totalAlcohol = (shots * alcoholContent['shot'] +
+                          wine * alcoholContent['wine'] +
+                          cocktails * alcoholContent['cocktail'] +
+                          beers * alcoholContent['beer']);
+
+    // Calculate Blood Alcohol Concentration (BAC)
+    const bac = (totalAlcohol / (weightCalc * genderCalc)) * 100;
+
+    return bac.toFixed(2);
+}
+
+
+
 async function calculate() {
   const response = await fetch('/calculateBAC', {
     method: 'POST',
