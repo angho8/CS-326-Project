@@ -45,7 +45,7 @@
   "scripts": {
     "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
     "milestone-02": "http-server src/client -p 3000 -c-1 -o -s",
-    "start": "http-server src/server -p 3000 -c-1 -o -s",
+    "start": "node src/server/express.js",
     "prettier": "prettier src —write",
     "validate": "html-validate src",
     "dev": "",
