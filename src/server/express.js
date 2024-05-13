@@ -18,7 +18,7 @@ export class BloodAlcoholCalculator {
     constructor() {
         this.gender = '';
         this.weight = weight;
-        this.medical = ''
+        this.medical = '';
         this.drinkCount = 0;
         this.drinkType = '';
         this.drinkVolume = 0;
