@@ -40,9 +40,9 @@ async function calculate() {
  * Function to edit user information
  */
 async function editUserInfo() {
-  const userGender = prompt('Gender : ');
-  const userWeight= prompt('Weight : ');
-  const userHeight = prompt('Height : ' );
+  const userGender = prompt('Enter your gender : ');
+  const userWeight= prompt('Enter your weight : ');
+  const userHeight = prompt('Enter your height : ' );
   const medDiag= prompt('Medical Diagnosis affecting Blood Alcohol: ');
   document.getElementById("gender").value = userGender;
   document.getElementById("weight").value = userWeight;
