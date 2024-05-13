@@ -1,6 +1,6 @@
-// import express from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
-import PouchDB from 'pouchdb'
+import PouchDB from 'pouchdb';
 
 const app = express();
 const port = 3000;
@@ -18,7 +18,7 @@ export class BloodAlcoholCalculator {
     constructor() {
         this.gender = '';
         this.weight = weight;
-        this.medical = ''
+        this.medical = '';
         this.drinkCount = 0;
         this.drinkType = '';
         this.drinkVolume = 0;
