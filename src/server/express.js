@@ -81,7 +81,14 @@ export class BloodAlcoholCalculator {
         }
     }
 
-    
+    setDrinkType(drinkType){
+        this.drinkType = drinkType;
+    }
+
+    setDrinkCount(drinkCount){
+        this.drinkCount = drinkCount;
+    }
+
     /**
      * Set volume of drink consumed based on drink type.
      * @param {string} drinkType - Type of drink consumed (e.g., "shot", "beer", "cocktail").
@@ -101,6 +108,8 @@ export class BloodAlcoholCalculator {
                 this.drinkVolume = 0;
         }
     }
+
+
 
     /**
      * Calculate Blood Alcohol Content (BAC) based on user input.
