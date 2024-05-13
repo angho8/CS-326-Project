@@ -17,7 +17,7 @@ const db = new PouchDB("counters");
 export class BloodAlcoholCalculator {
     constructor() {
         this.gender = '';
-        this.weight = weight;
+        this.weight = 0;
         this.medical = '';
         this.drinkCount = 0;
         this.drinkType = '';
