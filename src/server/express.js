@@ -135,7 +135,7 @@ export class BloodAlcoholCalculator {
         }
 
         const alcGrams = (drinkVolume * 0.789) * defaultAbv;
-        const totalBodyWater = this.gender === 'male' ? this.weight * 0.68 : this.weight * 0.55;
+        const totalBodyWater = this.gender === 'male' ? (this.weight * 0.68) : (this.weight * 0.55);
         const userGender = this.gender === 'male' ? 0.68 : 0.55;
         const bac = (alcGrams / (totalBodyWater * userGender)) * 100;
 
