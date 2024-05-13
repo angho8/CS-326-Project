@@ -1,6 +1,6 @@
-// import express from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
-import PouchDB from 'pouchdb'
+import PouchDB from 'pouchdb';
 
 const app = express();
 const port = 3000;
