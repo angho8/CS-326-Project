@@ -1,7 +1,8 @@
 /* this file adds animated transitions to very different elements 
-of the user interface to make the user interface better.
+of the user interface to make the user interface better. */
 
-Add transition properties to input fields */
+/* Add transition properties to input fields */
+
 .input-group input,
 .input-group select {
   width: calc(100% - 130px);
@@ -9,7 +10,7 @@ Add transition properties to input fields */
   border-radius: 3px;
   border: 1px solid gray;
   transition: all 0.3s ease-in-out; 
-}
+} 
 
 /* Adds transition properties to the result display */
 #result {
@@ -20,7 +21,7 @@ Add transition properties to input fields */
 }
 
 /* Adds hover effect to the button */
-button {
+ button {
   display: block;
   width: 100%;
   padding: 10px;

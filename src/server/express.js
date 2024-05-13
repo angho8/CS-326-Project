@@ -1,4 +1,4 @@
-import express from 'express';
+// import express from 'express';
 import bodyParser from 'body-parser';
 import PouchDB from 'pouchdb'
 
@@ -127,8 +127,8 @@ export class BloodAlcoholCalculator {
 
         const alcGrams = (drinkVolume * 0.789) * defaultAbv;
         const totalBodyWater = this.gender === 'male' ? this.weight * 0.68 : this.weight * 0.55;
-        const r = this.gender === 'male' ? 0.68 : 0.55;
-        const bac = (alcGrams / (totalBodyWater * r)) * 100;
+        const userGender = this.gender === 'male' ? 0.68 : 0.55;
+        const bac = (alcGrams / (totalBodyWater * userGender)) * 100;
 
         return bac;
     }
