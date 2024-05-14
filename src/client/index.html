@@ -41,12 +41,12 @@
             <div class="form-group">
                 <label for="medical-diagnosis">Medical Diagnosis affecting Blood Alcohol:</label>
                 <select id="medical-diagnosis" name="medical-diagnosis">
-                  <option value="true">True</option>
-                  <option value="false">False</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
             </div>
             <div class="spinn">
-            <img src="bottle.png" alt="Bottle" class="spin">
+            <img src="bottle.png" alt="Bottle" class="spin"></div>
             <a href="/">Go back</a>     
         `;
       } else if (target.matches('#calculate')) {
@@ -57,21 +57,21 @@
                 <div id="drinks">
                 <div>
                     <label for="shots">Shots:</label>
-                    <button onclick="increment('shots')">+</button>
+                    <button id="decrementShots">-</button>
                     <span id="shots">0</span>
-                    <button onclick="decrement('shots')">-</button>
+                    <button id="incrementShots">+</button>
                 </div>
                 <div>
                     <label for="cocktails">Cocktails:</label>
-                    <button onclick="increment('cocktails')">+</button>
+                    <button id="decrementCocktails">-</button>
                     <span id="cocktails">0</span>
-                    <button onclick="decrement('cocktails')">-</button>
+                    <button id="incrementCocktails">+</button>
                 </div>
                 <div>
                     <label for="beers">Beers:</label>
-                    <button onclick="increment('beers')">+</button>
+                    <button id="decrementBeers">-</button>
                     <span id="beers">0</span>
-                    <button onclick="decrement('beers')">-</button>
+                    <button id="incrementBeers">+</button>
                 </div>
                 <div id="warning">
                   <img src="warning.png" id="warning" alt="Pict">
@@ -79,7 +79,7 @@
             </div>
             <div id="result"></div>
             <div class="spinn">
-            <img src="bottle.png" alt="Bottle" class="spin">
+            <img src="bottle.png" alt="Bottle" class="spin"></div>
             <a href="/">Go back</a>
             </div>
         `;
@@ -99,9 +99,9 @@
                     <li>Seek medical help if someone shows signs of alcohol poisoning.</li>
                 </ul>
                 <div class="spinn">
-                <img src="bottle.png" alt="Bottle" class="spin">
+                <img src="bottle.png" alt="Bottle" class="spin"></div>
                 <a href="/">Go back</a>
-            </div>;
+            </div>
             `;
       }
     });
