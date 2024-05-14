@@ -22,7 +22,9 @@ export class BloodAlcoholCalculator {
    */
   setGender(gender) {
       this.gender = gender;
+      this.updateDrinks();
   }
+
 
   /**
    * Sets user's weight.
@@ -31,6 +33,7 @@ export class BloodAlcoholCalculator {
 
   setWeight(weight) {
       this.weight = weight;
+      this.updateDrinks();
   }
 
 
@@ -40,18 +43,19 @@ export class BloodAlcoholCalculator {
    */
   setMedical(medical) {
       this.medical = medical;
+      this.updateDrinks();
   }
 
   /**
    * Increments the type of drinks the user has indicated.
    * */
   increment(type) {
-      // this.drinks[type]++;
-      // this.updateDrinks();
-      if (this.drinks[type] !== undefined) {
-          this.drinks[type]++;
-          this.updateDrinks();
-      }
+    this.drinks[type]++;
+    this.updateDrinks();
+      // if (this.drinks[type] !== undefined) {
+      //     this.drinks[type]++;
+      //     this.updateDrinks();
+      // }
   }
           
   /**
@@ -59,10 +63,12 @@ export class BloodAlcoholCalculator {
    * @param {string} type - Type of drink to decrement (e.g., "shots", "cocktails", "beers").
    */
   decrement(type) {
-      if (this.drinks[type] > 0) {
-          this.drinks[type]--;
-          this.updateDrinks();
-      }
+    this.drinks[type]--;
+    this.updateDrinks();
+      // if (this.drinks[type] > 0) {
+      //     this.drinks[type]--;
+      //     this.updateDrinks();
+      // }
   }
 
   /**
@@ -168,9 +174,9 @@ const calculateElement = document.getElementById("calculate");
 const userinfoElement = document.getElementById("userInfo"); // Changed ID to match HTML
 const genderElement = document.getElementById("gender"); 
 const weightElement = document.getElementById("weight"); 
-const drinkCountElement = document.getElementById("drink-count"); 
-const drinkTypeElement = document.getElementById("drink-type"); 
-const drinkVolumeElement = document.getElementById("drink-volume");  
+// const drinkCountElement = document.getElementById("drink-count"); 
+// const drinkTypeElement = document.getElementById("drink-type"); 
+// const drinkVolumeElement = document.getElementById("drink-volume");  
 
 
 const incrementShotsButton = document.getElementById("incrementShots");
@@ -247,7 +253,15 @@ async function editUserInfo() {
     gender: userGender,
     weight: userWeight,
     medicalDiagnosis: medDiag
+    
   };
+
+  // const setUser (gender, weight){
+  //   this.setGender(gender);
+  //   this.setWeight(weight);
+  //   this.updateDrinks();
+  // };
+
 
   saveUserInfo(userInfo);
 }
