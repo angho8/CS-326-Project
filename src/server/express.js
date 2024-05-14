@@ -40,7 +40,8 @@ export class BloodAlcoholCalculator {
     /**
      * Sets user's weight.
      * @param {number} weight 
-     */
+     * define weight **/
+
     setWeight(weight) {
         this.weight = weight;
     }
@@ -59,7 +60,7 @@ export class BloodAlcoholCalculator {
      * */
     increment(type) {
         drinks[type]++;
-        updateDrinks();
+        this.updateDrinks();
     }
             
     /**
@@ -68,7 +69,7 @@ export class BloodAlcoholCalculator {
     decrement(type) {
         if (drinks[type] > 0) {
             drinks[type]--;
-            updateDrinks();
+            this.updateDrinks();
         }
     }
 
