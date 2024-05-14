@@ -1,15 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import PouchDB from 'pouchdb';
+import Database from './db';
 
 const app = express();
 const port = 3000;
 
-// Middleware
-app.use(bodyParser.json());
 
-// Initialize PouchDB
-const db = new PouchDB("counters");
+app.use(bodyParser.json());
+const db = Database("counters");
 
 /**
  * Initialize database
