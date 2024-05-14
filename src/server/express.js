@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import PouchDB from 'pouchdb';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { BloodAlcoholCalculator } from '../client/script';
+import { BloodAlcoholCalculator } from '../client/script.js';
 
 const app = express();
 const port = 3000;
