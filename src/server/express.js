@@ -12,6 +12,25 @@ app.use(bodyParser.json());
 const db = new PouchDB("counters");
 
 /**
+ * Initialize database
+ */
+const initdb = async () => {
+    try {
+        await db.get('users');
+    } catch (e) {
+        await db.put({ _id: 'users', users: [] });
+    }
+
+    try {
+        await db.get('drinks');
+    } catch (e) {
+        await db.put({ _id: 'drinks', drinks: [] });
+    }
+};
+
+initdb();
+
+/**
  * Blood Alcohol Calculator Class
  */
 export class BloodAlcoholCalculator {
@@ -118,19 +137,10 @@ export class BloodAlcoholCalculator {
      * @returns {number} - Blood Alcohol Content (BAC) percentage.
      */
     calculateBAC() {
-
-        const calculateElement = document.getElementById("calculate");
-        const userinfoElement = document.getElementById("user-info");
-        const gender = document.getElementById("gender").value;
-        const weight = parseFloat(document.getElementById("weight").value);
-        const drinkCount = parseInt(document.getElementById("drink-count").value);
-        const drinkType = document.getElementById("drink-type").value;
-        const drinkVolume = parseFloat(document.getElementById("drink-volume").value);
-
-
-
-        drinkType = drinkType.toLowerCase();
-        drinkVolume = drinkVolume;
+        const gender = this.gender;
+        const weight = this.weight;
+        const drinkType = this.drinkType;
+        const drinkVolume = this.drinkVolume;
 
         let defaultAbv;
         switch (drinkType) {
@@ -149,28 +159,72 @@ export class BloodAlcoholCalculator {
 
         const alcGrams = (drinkVolume * 0.789) * defaultAbv;
         const totalBodyWater = gender === 'male' ? (weight * 0.68) : (weight * 0.55);
-        const userGender = gender === 'male' ? 0.68 : 0.55;
-        const bac = (alcGrams / (totalBodyWater * userGender)) * 100;
+        const r = gender === 'male' ? 0.68 : 0.55;
+        const bac = (alcGrams / (totalBodyWater * r)) * 100;
 
         return bac;
     }
 }
 
+
 /**
  * Routes
  */
-app.post('/calculateBAC', (req, res) => {
-    const { gender, weight, drinkCount, drinkType, drinkVolume } = req.body;
 
-    const bacCalculator = new BloodAlcoholCalculator();
-    bacCalculator.setGender(gender);
-    bacCalculator.setWeight(weight);
-    bacCalculator.setDrinkCount(drinkCount);
-    bacCalculator.setDrinkType(drinkType);
-    bacCalculator.setDrinkVolume(drinkVolume);
+app.get('/users', async (req, res, next) => {
+    try {
+        const data = await db.get('users');
+        res.json(data.users);
+    } catch (e) {
+        next(e);
+    }
+});
 
-    const bacResult = bacCalculator.calculateBAC();
-    res.json({ bacResult });
+app.post('/users', async (req, res, next) => {
+    try {
+        const { userInfo } = req.body;
+        const data = await db.get('users');
+        data.users.push(userInfo);
+        await db.put(data);
+        res.status(201).json({ message: 'User added successfully' });
+    } catch (e) {
+        next(e);
+    }
+});
+
+app.put('/users/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { userInfo } = req.body;
+        const data = await db.get('users');
+        const userIndex = data.users.findIndex(user => user._id === id);
+        if (userIndex === -1) {
+            res.status(404).json({ message: 'User not found' });
+            return;
+        }
+        data.users[userIndex] = userInfo;
+        await db.put(data);
+        res.json({ message: 'User updated successfully' });
+    } catch (e) {
+        next(e);
+    }
+});
+
+app.delete('/users/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const data = await db.get('users');
+        data.users = data.users.filter(user => user._id !== id);
+        await db.put(data);
+        res.json({ message: 'User deleted successfully' });
+    } catch (e) {
+        next(e);
+    }
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
