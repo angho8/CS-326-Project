@@ -76,11 +76,12 @@ export class BloodAlcoholCalculator {
     /**
      * Updates the type of drinks the user has indicated
      */
-    updateDrinks() {
-        for (let type in drinks) {
-          document.getElementById(type).innerText = drinks[type];
-        }
-    }
+    // updateDrinks() {
+    //     for (let type in drinks) {
+    //       document.getElementById(type).innerText = drinks[type];
+    
+    //     }
+    // }
 
     setDrinkType(drinkType){
         this.drinkType = drinkType;
@@ -117,8 +118,19 @@ export class BloodAlcoholCalculator {
      * @returns {number} - Blood Alcohol Content (BAC) percentage.
      */
     calculateBAC() {
-        const drinkType = this.drinkType.toLowerCase();
-        const drinkVolume = this.drinkVolume;
+
+        const calculateElement = document.getElementById("calculate");
+        const userinfoElement = document.getElementById("user-info");
+        const gender = document.getElementById("gender").value;
+        const weight = parseFloat(document.getElementById("weight").value);
+        const drinkCount = parseInt(document.getElementById("drink-count").value);
+        const drinkType = document.getElementById("drink-type").value;
+        const drinkVolume = parseFloat(document.getElementById("drink-volume").value);
+
+
+
+        drinkType = drinkType.toLowerCase();
+        drinkVolume = drinkVolume;
 
         let defaultAbv;
         switch (drinkType) {
@@ -136,8 +148,8 @@ export class BloodAlcoholCalculator {
         }
 
         const alcGrams = (drinkVolume * 0.789) * defaultAbv;
-        const totalBodyWater = this.gender === 'male' ? (this.weight * 0.68) : (this.weight * 0.55);
-        const userGender = this.gender === 'male' ? 0.68 : 0.55;
+        const totalBodyWater = gender === 'male' ? (weight * 0.68) : (weight * 0.55);
+        const userGender = gender === 'male' ? 0.68 : 0.55;
         const bac = (alcGrams / (totalBodyWater * userGender)) * 100;
 
         return bac;

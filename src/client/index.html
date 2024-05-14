@@ -23,6 +23,7 @@
     document.addEventListener('click', function(event) {
       const target = event.target;
         if (target.matches('#userInfo')) {
+        // User information form
         appContainer.innerHTML = `
             <div class="form-group">
                 <label for="gender">Gender:</label>
@@ -49,6 +50,7 @@
             <a href="/">Go back</a>
         `;
       } else if (target.matches('#calculate')) {
+        // Blood Alcohol Calculator section
         appContainer.innerHTML = `
             <div class="container">
                 <h1>Calculate Blood Alcohol</h1>
@@ -77,6 +79,7 @@
             </div>
         `;
       } else if (target.matches('#safety')) {
+        // Drinking safety precautions section
         appContainer.innerHTML =`
             <div> 
                 <h1>Drinking Safety Precautions</h1>
@@ -97,4 +100,4 @@
     });
   </script>
 </body>
-</html>`
+</html>

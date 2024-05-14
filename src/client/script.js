@@ -35,7 +35,14 @@ async function calculate() {
 }
 }
 
-
+/**
+ * Updates the type of drinks the user has indicated
+ */
+async function updateDrinks() {
+  for (let type in drinks) {
+    document.getElementById(type).innerText = drinks[type];
+  }
+}
 /**
  * Function to edit user information
  */
