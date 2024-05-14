@@ -1,7 +1,3 @@
-/* this file adds animated transitions to very different elements 
-of the user interface to make the user interface better. */
-
-/* Add transition properties to input fields */
 
 .input-group input,
 .input-group select {

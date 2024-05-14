@@ -1,74 +1,37 @@
 #app {
-text-align: center;
+    text-align: center;
 }
 
+body {
+    font-family: Algerian;
+  }
+
 .btn-container {
-background-color: black;
-color: red;
+    background-color: black;
+    color: red;
 }
 
 .button {
-width: 300px; 
-height: 200px;
-background-color: white;
-color: black;
-position: relative;
-box-shadow: 10px 10px 42px 0 black;
+    width: 300px; 
+    height: 200px;
+    background-color: white;
+    color: black;
+    position: relative;
+    box-shadow: 10px 10px 42px 0 black;
 }
 
-.button:after, 
-.button:before {
-mix-blend-mode: multiply;
-filter: none;
-z-index: -1;
-content: '';
-width: calc(100% + (50px * 2));
-height: calc(100% + (50px * 2));
-position: absolute;
-display: block;
-animation: border 10s ease-in-out infinite;
-transform: translateX(-50px) translateY(-50px);
-}
-
-@keyframes border {
-0%, 100% {
-    -webkit-clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
-    clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
-}
-50% {
-    -webkit-clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
-    clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
-}
-}
-
-.button:after {
-animation-delay: -5s;
-background-color: red;
-clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
-}
-
-.button:before {
-background-color: gray;
-clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
-}
-
-.button:hover:after {
-animation-delay: -0.1s;
-}
-
-.button:hover:before, 
-.button:hover:after {
-animation-duration: 0.2s;
+.button:hover {
+    background-color: red;
 }
 
 #pic1:hover {
-animation: shake 0.5s;
-animation-iteration-count: infinite;
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
 }
 
 footer {
-background-color: red;
-color: black;
+    background-color: red;
+    color: black;
 }
 
 @keyframes shake {
@@ -85,6 +48,67 @@ color: black;
 100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-#warning {
-display: none;
+/* User Information Section */
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+.form-group label {
+    display: block;
+    font-weight: bold;
 }
+  
+.form-group input,
+.form-group select {
+    width: 100%; 
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+  
+  /* Blood Alcohol Calculator Section */
+.container {
+    margin: 2rem auto;
+    max-width: 600px;
+}
+  
+#drinks {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+  
+#drinks div {
+    margin: 0 1rem;
+}
+  
+#warning {
+    display: none;
+}
+
+
+  
+/* Safety Precautions Section */
+ul {
+    text-align: left;
+    list-style-position: inside;
+}
+
+.spinn {
+    position: relative;
+  }
+  
+  .spin {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

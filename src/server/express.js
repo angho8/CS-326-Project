@@ -1,13 +1,21 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import Database from './db';
+import PouchDB from 'pouchdb';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 3000;
 
-
+// Middleware
 app.use(bodyParser.json());
-const db = Database("counters");
+app.use(express.static('src'));
+
+// Initialize PouchDB
+const db = new PouchDB("counters");
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Initialize database
@@ -140,6 +148,9 @@ export class BloodAlcoholCalculator {
         const drinkType = this.drinkType;
         const drinkVolume = this.drinkVolume;
 
+        drinkType = drinkType.toLowerCase();
+        drinkVolume = drinkVolume;
+
         let defaultAbv;
         switch (drinkType) {
             case 'shot':
@@ -164,21 +175,42 @@ export class BloodAlcoholCalculator {
     }
 }
 
+const bacCalculator = new BloodAlcoholCalculator();
 
 /**
  * Routes
  */
-
-app.get('/users', async (req, res, next) => {
+app.post('/calculateBAC', async (req, res, next) => {
     try {
-        const data = await db.get('users');
-        res.json(data.users);
+        const { gender, weight, drinkCount, drinkType } = req.body;
+
+        // Set user's information in the calculator instance
+        bacCalculator.setGender(gender);
+        bacCalculator.setWeight(weight);
+        bacCalculator.setDrinkType(drinkType);
+        bacCalculator.setDrinkCount(drinkCount);
+        bacCalculator.setDrinkVolume(drinkType);
+
+        // Calculate BAC
+        const bacResult = bacCalculator.calculateBAC();
+
+        // Send the BAC result as response
+        res.json({ bacResult });
     } catch (e) {
         next(e);
     }
 });
 
-app.post('/users', async (req, res, next) => {
+app.get('/users', async (req, res) => {
+    try {
+        const data = await db.get('users');
+        res.json(data.users);
+    } catch (e) {
+        res.status(500).json({ message: 'Failed to retrieve users' });
+    }
+});
+
+app.post('/users', async (req, res) => {
     try {
         const { userInfo } = req.body;
         const data = await db.get('users');
@@ -186,11 +218,11 @@ app.post('/users', async (req, res, next) => {
         await db.put(data);
         res.status(201).json({ message: 'User added successfully' });
     } catch (e) {
-        next(e);
+        res.status(500).json({ message: 'Failed to add user' });
     }
 });
 
-app.put('/users/:id', async (req, res, next) => {
+app.put('/users/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { userInfo } = req.body;
@@ -204,11 +236,11 @@ app.put('/users/:id', async (req, res, next) => {
         await db.put(data);
         res.json({ message: 'User updated successfully' });
     } catch (e) {
-        next(e);
+        res.status(500).json({ message: 'Failed to update user' });
     }
 });
 
-app.delete('/users/:id', async (req, res, next) => {
+app.delete('/users/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const data = await db.get('users');
@@ -216,14 +248,15 @@ app.delete('/users/:id', async (req, res, next) => {
         await db.put(data);
         res.json({ message: 'User deleted successfully' });
     } catch (e) {
-        next(e);
+        res.status(500).json({ message: 'Failed to delete user' });
     }
 });
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
+
+app.use(express.static(path.join(__dirname, '../client')));
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

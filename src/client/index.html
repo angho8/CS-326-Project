@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intoximeter</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <div id="app">
@@ -26,6 +26,7 @@
         // User information form
         appContainer.innerHTML = `
             <div class="form-group">
+                <h1>User Information</h1>
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender">
                     <option value="male">Male</option>
@@ -42,8 +43,11 @@
                 <select id="medical-diagnosis" name="medical-diagnosis">
                   <option value="true">True</option>
                   <option value="false">False</option>
+                </select>
             </div>
-            <a href="/">Go back</a>
+            <div class="spinn">
+            <img src="bottle.png" alt="Bottle" class="spin">
+            <a href="/">Go back</a>     
         `;
       } else if (target.matches('#calculate')) {
         // Blood Alcohol Calculator section
@@ -74,6 +78,8 @@
                   </div>
             </div>
             <div id="result"></div>
+            <div class="spinn">
+            <img src="bottle.png" alt="Bottle" class="spin">
             <a href="/">Go back</a>
             </div>
         `;
@@ -92,6 +98,8 @@
                     <li>Don't pressure others to drink.</li>
                     <li>Seek medical help if someone shows signs of alcohol poisoning.</li>
                 </ul>
+                <div class="spinn">
+                <img src="bottle.png" alt="Bottle" class="spin">
                 <a href="/">Go back</a>
             </div>;
             `;
