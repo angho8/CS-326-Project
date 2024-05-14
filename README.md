@@ -34,6 +34,7 @@ The server implements error handling for all routes to manage and respond to dif
 
 Conclusion: 
     The process of creating our application had it's ups and downs but we were able to make something that we could use beyond this class. We did research about the alcohol levels and it's affects with the satisfaction of it all coming together with everything we learned through out this semester. 
+    Our project was worked on a lot through VSCode live where we could work directly together without having to worry about overlapping changes of code through Github's push and pull. With that, we mostly used Angela's server to open the live and run the code which is why her contribution on Github is much greater but each person contributed to the making of this application. 
     Thank you so much for everything and have a good summer! 
 
 
