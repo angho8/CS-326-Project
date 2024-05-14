@@ -136,11 +136,10 @@ export class BloodAlcoholCalculator {
   calculateBAC() {
       const gender = this.gender;
       const weight = this.weight;
-      const drinkType = this.drinkType;
+      const drinkType = this.drinkType.toLowerCase();
       const drinkVolume = this.drinkVolume;
 
-      drinkType = drinkType.toLowerCase();
-      drinkVolume = drinkVolume;
+ 
 
       let defaultAbv;
       switch (drinkType) {
