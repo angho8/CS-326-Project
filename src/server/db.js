@@ -6,7 +6,6 @@ import PouchDB from 'pouchdb';
  * @param {string} dbname - The name of the database to initialize.
  */
 const initdb = async (dbname) => {
-  // Initialize the database if it doesn't exist
   const db = new PouchDB(dbname);
 
   try {
@@ -23,7 +22,6 @@ const initdb = async (dbname) => {
     await db.put({ _id: 'drinks', drinks: [] });
   }
 
-  // Close the database connection
   await db.close();
 };
 
@@ -35,7 +33,6 @@ const initdb = async (dbname) => {
  * @returns {Object} - Database instance with saveUserInfo and saveDrinkData methods.
  */
 const Database = async (dbname) => {
-  // Initialize the database
   await initdb(dbname);
 
   const getDB = () => new PouchDB(dbname);
