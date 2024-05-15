@@ -50,54 +50,30 @@ export class BloodAlcoholCalculator {
    * Increments the type of drinks the user has indicated.
    * */
   increment(type) {
-    this.drinks[type]++;
-    this.updateDrinks();
-      // if (this.drinks[type] !== undefined) {
-      //     this.drinks[type]++;
-      //     this.updateDrinks();
-      // }
+    drinks[type]++;
+    updateUI();
   }
-          
+
   /**
    * Decrements the type of drinks the user has indicated. 
    * @param {string} type - Type of drink to decrement (e.g., "shots", "cocktails", "beers").
    */
   decrement(type) {
-    this.drinks[type]--;
-    this.updateDrinks();
-      // if (this.drinks[type] > 0) {
-      //     this.drinks[type]--;
-      //     this.updateDrinks();
-      // }
+    if (drinks[type] > 0) {
+      drinks[type]--;
+      updateUI();
+    }
   }
-
+          
   /**
    * Updates the type of drinks the user has indicated
    */
-  updateDrinks() {
-      // Update the UI to display the updated drink counts
-      // Example: document.getElementById('shots').innerText = this.drinks.shots;
-      this.drinkCount = Object.values(this.drinks).reduce((total, count) => total + count, 0);
-      // const shotsCountElement = document.getElementById('shots');
-      // const cocktailsCountElement = document.getElementById('cocktails');
-      // const beersCountElement = document.getElementById('beers');
-  
-      // shotsCountElement.innerText = this.drinks.shots;
-      // cocktailsCountElement.innerText = this.drinks.cocktails;
-      // beersCountElement.innerText = this.drinks.beers;
-  // }
+  updateUI() {
+    for (let type in drinks) {
+      document.getElementById(type).innerText = drinks[type];
+    }
   }
 
-
-  /**
-   * Updates the type of drinks the user has indicated
-   */
-  // updateDrinks() {
-  //     for (let type in drinks) {
-  //       document.getElementById(type).innerText = drinks[type];
-  
-  //     }
-  // }
 
   setDrinkType(drinkType){
       this.drinkType = drinkType;
