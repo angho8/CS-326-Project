@@ -169,6 +169,7 @@ export class BloodAlcoholCalculator {
 /**
  * Get DOM elements 
  */
+
 const calculateElement = document.getElementById("calculate");
 const userinfoElement = document.getElementById("userInfo"); // Changed ID to match HTML
 const genderElement = document.getElementById("gender"); 
