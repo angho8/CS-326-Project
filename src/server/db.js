@@ -1,3 +1,4 @@
+
 import PouchDB from 'pouchdb';
 
 /**

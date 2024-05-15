@@ -1,176 +1,14 @@
-/**
- * Blood Alcohol Calculator Class
- */
-export class BloodAlcoholCalculator {
-  constructor() {
-      this.gender = '';
-      this.weight = 0;
-      this.medical = '';
-      this.drinkCount = 0;
-      this.drinkType = '';
-      this.drinkVolume = 0;
-      this.drinks = {
-          shots: 0,
-          cocktails: 0,
-          beers: 0
-      };
-  }
-
-  /**
-   * Sets user's gender.
-   * @param {string} gender 
-   */
-  setGender(gender) {
-      this.gender = gender;
-  }
-
-  /**
-   * Sets user's weight.
-   * @param {number} weight 
-   * define weight **/
-
-  setWeight(weight) {
-      this.weight = weight;
-  }
-
-
-  /**
-   * Sets user's weight.
-   * @param {string} medical 
-   */
-  setMedical(medical) {
-      this.medical = medical;
-  }
-
-  /**
-   * Increments the type of drinks the user has indicated.
-   * */
-  increment(type) {
-    this.drinks[type]++;
-    this.updateDrinks();
-      // if (this.drinks[type] !== undefined) {
-      //     this.drinks[type]++;
-      //     this.updateDrinks();
-      // }
-  }
-
-  /**
-   * Decrements the type of drinks the user has indicated. 
-   * @param {string} type - Type of drink to decrement (e.g., "shots", "cocktails", "beers").
-   */
-  decrement(type) {
-    this.drinks[type]--;
-    this.updateDrinks();
-      // if (this.drinks[type] > 0) {
-      //     this.drinks[type]--;
-      //     this.updateDrinks();
-      // }
-  }
-          
-  /**
-   * Updates the type of drinks the user has indicated
-   */
-  updateUI() {
-    for (let type in drinks) {
-      document.getElementById(type).innerText = drinks[type];
-    }
-  }
-
-
-  setDrinkType(drinkType){
-      this.drinkType = drinkType;
-  }
-
-  setDrinkCount(drinkCount){
-      this.drinkCount = drinkCount;
-  }
-
-  /**
-   * Set volume of drink consumed based on drink type.
-   * @param {string} drinkType - Type of drink consumed (e.g., "shot", "beer", "cocktail").
-   */
-  setDrinkVolume(drinkType) {
-      switch (drinkType.toLowerCase()) {
-          case 'shot':
-              this.drinkVolume = 44;
-              break;
-          case 'cocktail':
-              this.drinkVolume = 150;
-              break;
-          case 'beer':
-              this.drinkVolume = 285;
-              break;
-          default:
-              this.drinkVolume = 0;
-      }
-  }
-
-
-
-  /**
-   * Calculate Blood Alcohol Content (BAC) based on user input.
-   * @returns {number} - Blood Alcohol Content (BAC) percentage.
-   */
-  calculateBAC() {
-      const gender = this.gender;
-      const weight = this.weight;
-      const drinkType = this.drinkType.toLowerCase();
-      const drinkVolume = this.drinkVolume;
-
- 
-
-      let defaultAbv;
-      switch (drinkType) {
-          case 'shot':
-              defaultAbv = 0.4;
-              break;
-          case 'cocktail':
-              defaultAbv = 0.15;
-              break;
-          case 'beer':
-              defaultAbv = 0.05;
-              break;
-          default:
-              defaultAbv = 0.05;
-      }
-
-      const alcGrams = (drinkVolume * 0.789) * defaultAbv;
-      const totalBodyWater = gender === 'male' ? (weight * 0.68) : (weight * 0.55);
-      const r = gender === 'male' ? 0.68 : 0.55;
-      const bac = (alcGrams / (totalBodyWater * r)) * 100;
-
-      return bac;
-  }
-}
-
 
 /**
  * Get DOM elements 
  */
-
 const calculateElement = document.getElementById("calculate");
-const userinfoElement = document.getElementById("userInfo");
+const userinfoElement = document.getElementById("userInfo"); // Changed ID to match HTML
 const genderElement = document.getElementById("gender"); 
 const weightElement = document.getElementById("weight"); 
 const drinkCountElement = document.getElementById("drink-count"); 
 const drinkTypeElement = document.getElementById("drink-type"); 
-const drinkVolumeElement = document.getElementById("drink-volume");  
-
-
-const incrementShotsButton = document.getElementById("incrementShots");
-const decrementShotsButton = document.getElementById("decrementShots");
-const incrementBeersButton = document.getElementById("incrementBeers");
-const decrementBeersButton = document.getElementById("decrementBeers");
-const incrementCocktailsButton = document.getElementById("incrementCocktails");
-const decrementCocktailsButton = document.getElementById("decrementCocktails");
-
-// Event listeners
-incrementShotsButton.addEventListener("click", () => bacCalculator.increment("shots"));
-decrementShotsButton.addEventListener("click", () => bacCalculator.decrement("shots"));
-incrementBeersButton.addEventListener("click", () => bacCalculator.increment("beers"));
-decrementBeersButton.addEventListener("click", () => bacCalculator.decrement("beers"));
-incrementCocktailsButton.addEventListener("click", () => bacCalculator.increment("cocktails"));
-decrementCocktailsButton.addEventListener("click", () => bacCalculator.decrement("cocktails"));
+const drinkVolumeElement = document.getElementById("drink-volume"); 
 
 /**
  * Calculate BAC
@@ -179,7 +17,7 @@ async function calculate() {
   const gender = genderElement.value;
   const weight = parseFloat(weightElement.value);
   const drinkCount = parseInt(drinkCountElement.value);
-  const drinkType = drinkTypeElement.value;
+  const drinkType = drinkTypeElement.value.to;
   const drinkVolume = parseFloat(drinkVolumeElement.value);
 
   const response = await fetch('/calculateBAC', {
