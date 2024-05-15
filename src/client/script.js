@@ -1,4 +1,3 @@
-
 /**
  * Get DOM elements 
  */
@@ -17,7 +16,7 @@ async function calculate() {
   const gender = genderElement.value;
   const weight = parseFloat(weightElement.value);
   const drinkCount = parseInt(drinkCountElement.value);
-  const drinkType = drinkTypeElement.value.to;
+  const drinkType = drinkTypeElement.value;
   const drinkVolume = parseFloat(drinkVolumeElement.value);
 
   const response = await fetch('/calculateBAC', {

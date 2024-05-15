@@ -1,5 +1,5 @@
-2024/05/14-18:16:18.434 da8 Recovering log #77
-2024/05/14-18:16:18.434 da8 Level-0 table #79: started
-2024/05/14-18:16:18.436 da8 Level-0 table #79: 237 bytes OK
-2024/05/14-18:16:18.440 da8 Delete type=0 #77
-2024/05/14-18:16:18.440 da8 Delete type=3 #75
+2024/05/14-18:21:43.694 4ca0 Recovering log #80
+2024/05/14-18:21:43.694 4ca0 Level-0 table #82: started
+2024/05/14-18:21:43.695 4ca0 Level-0 table #82: 237 bytes OK
+2024/05/14-18:21:43.699 4ca0 Delete type=0 #80
+2024/05/14-18:21:43.699 4ca0 Delete type=3 #78

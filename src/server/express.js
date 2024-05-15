@@ -80,34 +80,33 @@ export class BloodAlcoholCalculator {
         this.medical = medical;
     }
 
-  /**
-   * Increments the type of drinks the user has indicated.
-   * */
-  increment(type) {
-    drinks[type]++;
-    updateUI();
-  }
-
-  /**
-   * Decrements the type of drinks the user has indicated. 
-   * @param {string} type - Type of drink to decrement (e.g., "shots", "cocktails", "beers").
-   */
-  decrement(type) {
-    if (drinks[type] > 0) {
-      drinks[type]--;
-      updateUI();
+    /**
+     * Increments the type of drinks the user has indicated.
+     * */
+    increment(type) {
+        drinks[type]++;
+        this.updateDrinks();
     }
-  }
-          
-  /**
-   * Updates the type of drinks the user has indicated
-   */
-  updateUI() {
-    for (let type in drinks) {
-      document.getElementById(type).innerText = drinks[type];
+            
+    /**
+     * Decrements the type of drinks the user has indicated. 
+     * */
+    decrement(type) {
+        if (drinks[type] > 0) {
+            drinks[type]--;
+            this.updateDrinks();
+        }
     }
-  }
 
+    /**
+     * Updates the type of drinks the user has indicated
+     */
+    // updateDrinks() {
+    //     for (let type in drinks) {
+    //       document.getElementById(type).innerText = drinks[type];
+    
+    //     }
+    // }
 
     setDrinkType(drinkType){
         this.drinkType = drinkType;
@@ -123,13 +122,13 @@ export class BloodAlcoholCalculator {
      */
     setDrinkVolume(drinkType) {
         switch (drinkType.toLowerCase()) {
-            case 'shot':
+            case 'shots':
                 this.drinkVolume = 44;
                 break;
-            case 'cocktail':
+            case 'cocktails':
                 this.drinkVolume = 150;
                 break;
-            case 'beer':
+            case 'beers':
                 this.drinkVolume = 285;
                 break;
             default:
@@ -146,21 +145,18 @@ export class BloodAlcoholCalculator {
     calculateBAC() {
         const gender = this.gender;
         const weight = this.weight;
-        const drinkType = this.drinkType;
+        const drinkType = this.drinkType.toLowerCase();
         const drinkVolume = this.drinkVolume;
-
-        drinkType = drinkType.toLowerCase();
-        drinkVolume = drinkVolume;
 
         let defaultAbv;
         switch (drinkType) {
-            case 'shot':
+            case 'shots':
                 defaultAbv = 0.4;
                 break;
-            case 'cocktail':
+            case 'cocktails':
                 defaultAbv = 0.15;
                 break;
-            case 'beer':
+            case 'beers':
                 defaultAbv = 0.05;
                 break;
             default:
