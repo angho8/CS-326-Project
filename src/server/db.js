@@ -2,7 +2,7 @@ import PouchDB from 'pouchdb';
 
 /**
  * Initializes a PouchDB instance and creates necessary collections if they don't exist.
- *
+ * @async
  * @param {string} dbname - The name of the database to initialize.
  */
 const initdb = async (dbname) => {

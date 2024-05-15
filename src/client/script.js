@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * Blood Alcohol Calculator Class
  */
@@ -61,8 +59,11 @@ export class BloodAlcoholCalculator {
    * @param {string} type - Type of drink to decrement (e.g., "shots", "cocktails", "beers").
    */
   decrement(type) {
-    this.drinks[type]--;
-    this.updateDrinks();
+    if (this.drinks[type] > 0) {
+      this.drinks[type]--;
+      this.updateDrinks();
+    }
+
       // if (this.drinks[type] > 0) {
       //     this.drinks[type]--;
       //     this.updateDrinks();
@@ -93,13 +94,13 @@ export class BloodAlcoholCalculator {
    */
   setDrinkVolume(drinkType) {
       switch (drinkType.toLowerCase()) {
-          case 'shot':
+          case 'shots':
               this.drinkVolume = 44;
               break;
-          case 'cocktail':
+          case 'cocktails':
               this.drinkVolume = 150;
               break;
-          case 'beer':
+          case 'beers':
               this.drinkVolume = 285;
               break;
           default:
@@ -119,17 +120,16 @@ export class BloodAlcoholCalculator {
       const drinkType = this.drinkType.toLowerCase();
       const drinkVolume = this.drinkVolume;
 
- 
 
       let defaultAbv;
       switch (drinkType) {
-          case 'shot':
+          case 'shots':
               defaultAbv = 0.4;
               break;
-          case 'cocktail':
+          case 'cocktails':
               defaultAbv = 0.15;
               break;
-          case 'beer':
+          case 'beers':
               defaultAbv = 0.05;
               break;
           default:
@@ -146,101 +146,100 @@ export class BloodAlcoholCalculator {
 }
 
 
->>>>>>> parent of f168fce (a)
-/**
- * Get DOM elements 
- */
+// /**
+//  * Get DOM elements 
+//  */
 
-const calculateElement = document.getElementById("calculate");
-const userinfoElement = document.getElementById("userInfo");
-const genderElement = document.getElementById("gender"); 
-const weightElement = document.getElementById("weight"); 
-const drinkCountElement = document.getElementById("drink-count"); 
-const drinkTypeElement = document.getElementById("drink-type"); 
-const drinkVolumeElement = document.getElementById("drink-volume");  
+// const calculateElement = document.getElementById("calculate");
+// const userinfoElement = document.getElementById("userInfo");
+// const genderElement = document.getElementById("gender"); 
+// const weightElement = document.getElementById("weight"); 
+// const drinkCountElement = document.getElementById("drink-count"); 
+// const drinkTypeElement = document.getElementById("drink-type"); 
+// const drinkVolumeElement = document.getElementById("drink-volume");  
 
 
-const incrementShotsButton = document.getElementById("incrementShots");
-const decrementShotsButton = document.getElementById("decrementShots");
-const incrementBeersButton = document.getElementById("incrementBeers");
-const decrementBeersButton = document.getElementById("decrementBeers");
-const incrementCocktailsButton = document.getElementById("incrementCocktails");
-const decrementCocktailsButton = document.getElementById("decrementCocktails");
+// const incrementShotsButton = document.getElementById("incrementShots");
+// const decrementShotsButton = document.getElementById("decrementShots");
+// const incrementBeersButton = document.getElementById("incrementBeers");
+// const decrementBeersButton = document.getElementById("decrementBeers");
+// const incrementCocktailsButton = document.getElementById("incrementCocktails");
+// const decrementCocktailsButton = document.getElementById("decrementCocktails");
 
-// Event listeners
-incrementShotsButton.addEventListener("click", () => bacCalculator.increment("shots"));
-decrementShotsButton.addEventListener("click", () => bacCalculator.decrement("shots"));
-incrementBeersButton.addEventListener("click", () => bacCalculator.increment("beers"));
-decrementBeersButton.addEventListener("click", () => bacCalculator.decrement("beers"));
-incrementCocktailsButton.addEventListener("click", () => bacCalculator.increment("cocktails"));
-decrementCocktailsButton.addEventListener("click", () => bacCalculator.decrement("cocktails"));
+// // Event listeners
+// incrementShotsButton.addEventListener("click", () => bacCalculator.increment("shots"));
+// decrementShotsButton.addEventListener("click", () => bacCalculator.decrement("shots"));
+// incrementBeersButton.addEventListener("click", () => bacCalculator.increment("beers"));
+// decrementBeersButton.addEventListener("click", () => bacCalculator.decrement("beers"));
+// incrementCocktailsButton.addEventListener("click", () => bacCalculator.increment("cocktails"));
+// decrementCocktailsButton.addEventListener("click", () => bacCalculator.decrement("cocktails"));
 
-/**
- * Calculate BAC
- */
-async function calculate() {
-  const gender = genderElement.value;
-  const weight = parseFloat(weightElement.value);
-  const drinkCount = parseInt(drinkCountElement.value);
-  const drinkType = drinkTypeElement.value;
-  const drinkVolume = parseFloat(drinkVolumeElement.value);
+// /**
+//  * Calculate BAC
+//  */
+// async function calculate() {
+//   const gender = genderElement.value;
+//   const weight = parseFloat(weightElement.value);
+//   const drinkCount = parseInt(drinkCountElement.value);
+//   const drinkType = drinkTypeElement.value;
+//   const drinkVolume = parseFloat(drinkVolumeElement.value);
 
-  const response = await fetch('/calculateBAC', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      gender: gender,
-      weight: weight,
-      drinkCount: drinkCount,
-      drinkType: drinkType,
-      drinkVolume: drinkVolume
-    })
-  });
+//   const response = await fetch('/calculateBAC', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       gender: gender,
+//       weight: weight,
+//       drinkCount: drinkCount,
+//       drinkType: drinkType,
+//       drinkVolume: drinkVolume
+//     })
+//   });
   
-  const data = await response.json();
-  if (document.getElementById("medical-diagnosis").value === "false") {
-    userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${data.bacResult}%`;
-  } else {
-    userinfoElement.innerHTML = `Blood Alcohol Content (BAC): >${data.bacResult}%`;
-  }
+//   const data = await response.json();
+//   if (document.getElementById("medical-diagnosis").value === "false") {
+//     userinfoElement.innerHTML = `Blood Alcohol Content (BAC): ${data.bacResult}%`;
+//   } else {
+//     userinfoElement.innerHTML = `Blood Alcohol Content (BAC): >${data.bacResult}%`;
+//   }
 
-  // Call shouldShowImage with the result of the calculation
-  if (shouldShowImage(data.bacResult)) {
-    document.getElementById("warning.png").style.display = "block";
-  }
-}
+//   // Call shouldShowImage with the result of the calculation
+//   if (shouldShowImage(data.bacResult)) {
+//     document.getElementById("warning.png").style.display = "block";
+//   }
+// }
 
-/**
- * Function to determine whether to show the image
- */
-function shouldShowImage(bacResult) {
-  return bacResult < 0.08; // Adjust the condition based on your requirement
-}
+// /**
+//  * Function to determine whether to show the image
+//  */
+// function shouldShowImage(bacResult) {
+//   return bacResult < 0.08; // Adjust the condition based on your requirement
+// }
 
-/**
- * Function to edit user information
- */
-async function editUserInfo() {
-  const userGender = prompt('Enter your gender : ');
-  const userWeight= prompt('Enter your weight : ');
-  const medDiag= prompt('Medical Diagnosis affecting Blood Alcohol: ');
-  genderElement.value = userGender;
-  weightElement.value = userWeight;
-  document.getElementById("medical-diagnosis").value = medDiag; // Assuming this is a select element
+// /**
+//  * Function to edit user information
+//  */
+// async function editUserInfo() {
+//   const userGender = prompt('Enter your gender : ');
+//   const userWeight= prompt('Enter your weight : ');
+//   const medDiag= prompt('Medical Diagnosis affecting Blood Alcohol: ');
+//   genderElement.value = userGender;
+//   weightElement.value = userWeight;
+//   document.getElementById("medical-diagnosis").value = medDiag; // Assuming this is a select element
 
-  const userInfo = {
-    gender: userGender,
-    weight: userWeight,
-    medicalDiagnosis: medDiag
-  };
+//   const userInfo = {
+//     gender: userGender,
+//     weight: userWeight,
+//     medicalDiagnosis: medDiag
+//   };
 
-  saveUserInfo(userInfo);
-}
+//   saveUserInfo(userInfo);
+// }
   
-// Event listener for calculate button
-calculateElement.addEventListener("click", calculate);
+// // Event listener for calculate button
+// calculateElement.addEventListener("click", calculate);
 
-// Event listener for user info button
-userinfoElement.addEventListener("click", editUserInfo);
+// // Event listener for user info button
+// userinfoElement.addEventListener("click", editUserInfo);
