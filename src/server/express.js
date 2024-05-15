@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import PouchDB from 'pouchdb';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { BloodAlcoholCalculator } from '../client/script.js';
 
 const app = express();
 const port = 3000;
@@ -17,23 +18,24 @@ const db = new PouchDB("counters");
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/**
- * Initialize database
- */
-const initdb = async () => {
-    try {
-        await db.get('users');
-    } catch (e) {
-        await db.put({ _id: 'users', users: [] });
-    }
+// /**
+//  * Initialize database
+//  */
+// const initdb = async () => {
+//     try {
+//         await db.get('users');
+//     } catch (e) {
+//         await db.put({ _id: 'users', users: [] });
+//     }
 
-    try {
-        await db.get('drinks');
-    } catch (e) {
-        await db.put({ _id: 'drinks', drinks: [] });
-    }
-};
+//     try {
+//         await db.get('drinks');
+//     } catch (e) {
+//         await db.put({ _id: 'drinks', drinks: [] });
+//     }
+// };
 
+<<<<<<< HEAD
 initdb();
 
 /**
@@ -171,6 +173,9 @@ export class BloodAlcoholCalculator {
         return bac;
     }
 }
+=======
+// initdb();
+>>>>>>> parent of f168fce (a)
 
 const bacCalculator = new BloodAlcoholCalculator();
 
