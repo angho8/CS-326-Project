@@ -1,6 +1,6 @@
 Introduction:
     Our application will calculate an individual's blood alcohol percentage based on their height, weight, health conditions, and how many drinks they have had in a certain amount of time. This application is a great tool for college students due to drinking culture since it’ll lessen the amount of alcohol-based hospitalizations. 
-Along with this, our application will tell the user their expected level of drunkenness based on their blood alcohol percentage and will alert the user when it is at or above a dangerous level.This is based on user input and consists of frontend interaction for user interaction and backend for processing data and calculation. We stored data using PouchDB. 
+    Along with this, our application will tell the user their expected level of drunkenness based on their blood alcohol percentage and will alert the user when it is at or above a dangerous level.This is based on user input and consists of frontend interaction for user interaction and backend for processing data and calculation. We stored data using PouchDB. 
 
 Set-Up Instructions:
     To get started, clone the repository with  git clone https://github.com/angho8/cs-326-project and install pm to insure the system runs on your device. To open the server use `npm start` and open your browser to `http://localhost:3000` where the BAC will begin. 
@@ -35,6 +35,6 @@ The server implements error handling for all routes to manage and respond to dif
 Conclusion: 
     The process of creating our application had it's ups and downs but we were able to make something that we could use beyond this class. We did research about the alcohol levels and it's affects with the satisfaction of it all coming together with everything we learned through out this semester. 
     Our project was worked on a lot through VSCode live where we could work directly together without having to worry about overlapping changes of code through Github's push and pull. With that, we mostly used Angela's server to open the live and run the code which is why her contribution on Github is much greater but each person contributed to the making of this application. 
-    Thank you so much for everything and have a good summer! 
+   
 
 
